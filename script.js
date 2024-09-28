@@ -99,7 +99,6 @@
 //     "php",
 //     "java"
 // ]
-
 // <td>
 //     <button onclick="deleteButtons(event)" class="btn btn-danger delete-button">
 //     Delete Row</button>
@@ -124,75 +123,61 @@
 
 // print()
 
-const addRowToTable = (name, last, handle, elementIndex) => {
-    const tableBody = document.querySelector(".table tbody");
 
-    tableBody.insertAdjacentHTML(
-        "beforeend",
-        `
-        
+
+
+
+
+
+const addRowToTable = (name, last, handle, elementIndex) => {
+
+
+    const tableBody = document.querySelector('.table tbody')
+
+    tableBody.insertAdjacentHTML("beforeend", `
+    
+
                     <tr>
                         <th scope="row">${elementIndex}</th>
                         <td>${name}</td>
                         <td>${last}</td>
                         <td>${handle}</td>
-                        
                         <td>
-                            <button class="btn btn-danger delete-button-${elementIndex}">
-                            Delete Row</button>
+                                <button type="button" class="btn btn-danger delete-button-${elementIndex}">
+                                Delete Row</button>  
                         </td>
+                        
                     </tr>
-        `
-    );
-};
+       `
+
+    )
+}
 
 let elementIndex = 0;
 
-const newRowButton = document.querySelector(".add-new-button");
+const newRowButtun = document.querySelector('.add-new-button')
 
-newRowButton.addEventListener("click", () => {
+newRowButtun.addEventListener("click", () => {
 
-    const nameInput = document.querySelector(".name");
-    const lastInput = document.querySelector(".last");
-    const handleInput = document.querySelector(".handle");
+    const nameInput = document.querySelector('.name')
+    const lastInput = document.querySelector('.last')
+    const handleInput = document.querySelector('.handle')
 
-    addRowToTable(nameInput.value, lastInput.value, handleInput.value, elementIndex);
+    addRowToTable(nameInput.value, lastInput.value, handleInput.value, elementIndex)
+
+
+    nameInput.value = '';
+    lastInput.value = "";
+    handleInput.value = ''
+
 
     const deleteButton = document.querySelector(`.delete-button-${elementIndex}`)
 
     deleteButton.addEventListener("click", (event) => {
 
         event.target.parentElement.parentElement.remove()
-
     })
-    elementIndex += 1
 
-    nameInput.value = '';
-    lastInput.value = "";
-    handleInput.value = ""
-});
+    elementIndex++
+})
 
-// const nameInput = document.querySelector('.name')
-
-// nameInput.addEventListener("input", (event) => {
-
-//     const data = event.target.value
-
-//     console.log(data);
-
-// })
-
-
-// const deleteButtons = (event) => {
-//     const deleteButton = document.querySelector('.delete-button')
-
-//     deleteButton.addEventListener('click', () => {
-
-
-//         event.target.parentElement.parentElement.remove();
-
-//     })
-
-//     event.target.parentElement.parentElement.remove();
-
-// }
